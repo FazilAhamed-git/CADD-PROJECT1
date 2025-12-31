@@ -1,33 +1,58 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        function validate(){
+            var mobile = document.getElementById('mobile').value;
+            var password = document.getElementById('password').value;
+            var submit = document.getElementById("submit");
+            if(mobile === "" || password === "") {
+                alert("Please fill in all fields.");
+                return false;
+            } else {
+                alert("Login Successful");
+                // replace the submit content with a link, then programmatically click it
+                submit.innerHTML = '<a id="goHome" href="home2.html">Proceed to Homepage</a>';
+                document.getElementById('goHome').click();
+                return false;
+            }
+        };
+        </script>
 </head>
 <body>
 
 <div class="login-container">
     <h2>Login</h2>
 
-    <form>
+    <form name="fill" onsubmit="return validate()">
         <div class="input-group">
             <label>Mobile Number</label>
-            <input type="tel" placeholder="Enter mobile number" required>
+            <input type="tel" placeholder="Enter mobile number" id="mobile" value=""  required>
         </div>
 
         <div class="input-group">
             <label>Password</label>
-            <input type="password" placeholder="Enter password" required>
+            <input type="password" placeholder="Enter password" id="password" value="" required>
         </div>
 
-        <button type="submit">Login</button>
+        
+        <div class="input-group">
+            <button type="submit" id="submit" class="btn">Login</button>
+        <p class="forgot">
+    <a href="forgot.html">Forgot Password?</a>
+        </p>
 
         <p class="register-text">
             Don't have an account?
             <a href="register.html">Register</a>
         </p>
     </form>
+
+    
 </div>
 
 </body>
